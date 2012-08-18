@@ -26,7 +26,7 @@ project but uses Ubuntu 11.10.
 
 * Check out this project:
 
-    git clone git://github.com/hilverd/vagrant-ubuntu-oracle-xe
+        git clone git://github.com/hilverd/vagrant-ubuntu-oracle-xe
 
 * Download [Oracle Database 11g Express Edition] for Linux x64. Place the file
   `oracle-xe-11.2.0-1.0.x86_64.rpm.zip` in the directory `modules/oracle/files`

@@ -4,7 +4,7 @@
 Vagrant::Config.run do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  config.vm.host_name = "oracle_xe"
+  config.vm.host_name = "oracle"
 
   config.vm.network :hostonly, "192.168.33.10"
 
@@ -16,6 +16,6 @@ Vagrant::Config.run do |config|
   end
 
   config.vm.customize ["modifyvm", :id,
-                       "--name", "oracle_xe",
+                       "--name", "oracle",
                        "--memory", "3048"]
 end
