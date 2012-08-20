@@ -36,7 +36,7 @@ project but uses Ubuntu 11.10.
   few minutes.
 
 You should now be able to connect to the new database at `192.168.33.10:1521/xe`
-as `sys` or `system` with password `manager`. For example, if you have `sqlplus`
+as `system` with password `manager`. For example, if you have `sqlplus`
 installed on the host machine you can do
 
     sqlplus system/manager@//192.168.33.10:1521/xe
