@@ -6,7 +6,12 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.host_name = "oracle"
   config.vm.forward_port 1521, 1521
-  config.vm.share_folder "database", "/vagrant/database", "/Users/cwalker/workspaces/ge/ge-data-management/database" 
+  #config.vm.share_folder "database", "/vagrant/database", "/Users/cwalker/workspaces/ge/ge-data-management/database"
+  config.vm.share_folder "database", "/vagrant/database", "/Users/cwalker/workspaces/ge/ge-data-management/database",  :extra => 'dmode=555,fmode=555'
+
+  # set auto_update to false, if do NOT want to check the correct additions 
+  # version when booting this machine
+  config.vbguest.auto_update = false
 
   config.vm.provision :puppet,
   :module_path => "modules",
