@@ -13,6 +13,8 @@ Vagrant::Config.run do |config|
   # version when booting this machine
   config.vbguest.auto_update = false
 
+  config.vm.provision :shell, :inline => "echo \"America/New_York\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
+
   config.vm.provision :puppet,
   :module_path => "modules",
   :options => "--verbose --trace" do |puppet|
