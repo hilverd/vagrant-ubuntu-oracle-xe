@@ -29,7 +29,7 @@ Richard Kolb fixed the issue where the Ubuntu could not see DNS
 
 * Check out this project:
 
-        git clone git://github.com/hilverd/vagrant-ubuntu-oracle-xe
+        git clone https://github.com/rjdkolb/vagrant-ubuntu-oracle-xe.git
 
 * Download [Oracle Database 11g Express Edition] for Linux x64. Place the file
   `oracle-xe-11.2.0-1.0.x86_64.rpm.zip` in the directory `modules/oracle/files`
