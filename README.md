@@ -12,6 +12,9 @@ how to install Oracle XE 11g on Ubuntu 12.04, without explicitly providing a
 Vagrant or provisioner configuration. The latter has the same purpose as this
 project but uses Ubuntu 11.10.
 
+Richard Kolb fixed the issue where the Ubuntu could not see DNS
+(config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"])
+
 ## Requirements
 
 * You need to have [Vagrant] installed.
