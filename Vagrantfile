@@ -8,6 +8,9 @@ Vagrant::Config.run do |config|
 
   config.vm.network :hostonly, "192.168.33.10"
 
+  #Enable DNS behind NAT
+  config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+
   config.vm.provision :puppet,
   :module_path => "modules",
   :options => "--verbose --trace" do |puppet|
