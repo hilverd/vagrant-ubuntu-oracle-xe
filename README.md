@@ -38,7 +38,7 @@ Richard Kolb fixed the issue where the Ubuntu could not see DNS
 * Run `vagrant up` from the base directory of this project. This should take a
   few minutes.
 
-You should now be able to connect to the new database at `192.168.33.10:1521/xe`
+You should now be able to connect to the new database at `localhost:1521/xe`
 as `system` with password `manager`. For example, if you have `sqlplus`
 installed on the host machine you can do
 
