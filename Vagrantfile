@@ -11,6 +11,9 @@ Vagrant::Config.run do |config|
   #Enable DNS behind NAT
   config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
+  #Port forward Oracle port
+  config.vm.forward_port 1521, 1521
+
   config.vm.provision :puppet,
   :module_path => "modules",
   :options => "--verbose --trace" do |puppet|
