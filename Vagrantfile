@@ -17,8 +17,7 @@ Vagrant::Config.run do |config|
     puppet.manifest_file  = "base.pp"
   end
 
-  # Oracle claims to need 2G of memory available minimum.
+  # Oracle claims to need 512MB of memory available minimum.
   config.vm.customize ["modifyvm", :id,
-                       "--name", "oracle",
-                       "--memory", "1024"]
+                       "--memory", "512"]
 end
