@@ -57,6 +57,8 @@ values may also work, as long as (I believe) 2 GB is available for Oracle.
 
 [Oracle Database 11g Express Edition]: http://www.oracle.com/technetwork/products/express-edition/overview/index.html
 
+[Oracle Database 11g EE Documentation]: http://docs.oracle.com/cd/E17781_01/index.htm
+
 [Installing Oracle 11g R2 Express Edition on Ubuntu 64-bit]: http://meandmyubuntulinux.blogspot.co.uk/2012/05/installing-oracle-11g-r2-express.html
 
 [vagrant-oracle-xe]: https://github.com/codescape/vagrant-oracle-xe
