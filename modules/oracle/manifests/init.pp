@@ -89,6 +89,14 @@ class oracle::swap {
       user => root,
       unless => "/bin/grep '^/swapfile' /etc/fstab 2>/dev/null";
   }
+  
+  file {
+    "/swapfile":
+      mode => 600,
+      owner => root,
+      group => root,
+      require => Exec['create swapfile'];
+  }
 }
 
 class oracle::xe {
