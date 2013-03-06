@@ -18,19 +18,7 @@ class oracle::server {
     "git":
       require => Exec["apt-update"],
       ensure => installed;
-    "htop":
-      require => Exec["apt-update"],
-      ensure => installed;
     "libaio1":
-      require => Exec["apt-update"],
-      ensure => installed;
-    "monit":
-      require => Exec["apt-update"],
-      ensure => installed;
-    "ntp":
-      require => Exec["apt-update"],
-      ensure => installed;
-    "rsyslog":
       require => Exec["apt-update"],
       ensure => installed;
     "unixodbc":
@@ -44,10 +32,6 @@ class oracle::server {
   service {
     "monit":
       require => Package["monit"],
-      ensure => running;
-    "ntp":
-      ensure => stopped;
-    "rsyslog":
       ensure => running;
     "procps":
       ensure => running;
