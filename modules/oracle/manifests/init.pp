@@ -13,12 +13,6 @@ class oracle::server {
     "bc":
       require => Exec["apt-update"],
       ensure => installed;
-    "curl":
-      require => Exec["apt-update"],
-      ensure => installed;
-    "git":
-      require => Exec["apt-update"],
-      ensure => installed;
     "libaio1":
       require => Exec["apt-update"],
       ensure => installed;
