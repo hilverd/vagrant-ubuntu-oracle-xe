@@ -26,7 +26,7 @@ project but uses Ubuntu 11.10.
 
 * Check out this project:
 
-        git clone git://github.com/hilverd/vagrant-ubuntu-oracle-xe
+        git clone git://github.com/buckett/vagrant-ubuntu-oracle-xe
 
 * Download [Oracle Database 11g Express Edition] for Linux x64. Place the file
   `oracle-xe-11.2.0-1.0.x86_64.rpm.zip` in the directory `modules/oracle/files`
@@ -39,7 +39,7 @@ You should now be able to connect to the new database at `192.168.33.10:1521/xe`
 as `system` with password `manager`. For example, if you have `sqlplus`
 installed on the host machine you can do
 
-    sqlplus system/manager@//192.168.33.10:1521/xe
+    sqlplus system/manager@//localhost:1521/xe
 
 ## Troubleshooting
 
