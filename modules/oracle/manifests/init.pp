@@ -147,4 +147,10 @@ class oracle::xe {
       require => [Exec["alien xe"]],
       source => "/home/vagrant/oracle-xe_11.2.0-2_amd64.deb",
   }
+  
+  service {
+  	"oracle-xe":
+  	  ensure => "running",
+  	  require => Package["oracle-xe"],
+  }
 }
