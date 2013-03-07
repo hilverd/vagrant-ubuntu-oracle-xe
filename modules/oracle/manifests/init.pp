@@ -9,6 +9,7 @@ class oracle::server {
     "alien":
       require => Exec["apt-update"],
       ensure => installed;
+    # Needed for oracle installer
     "bc":
       require => Exec["apt-update"],
       ensure => installed;
