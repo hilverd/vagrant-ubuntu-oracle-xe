@@ -6,7 +6,6 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.host_name = "oracle"
 
-  config.vm.network :hostonly, "192.168.33.10"
   #config.vm.network :hostonly, "192.168.33.10"
   config.vm.forward_port 1521, 1521
 
