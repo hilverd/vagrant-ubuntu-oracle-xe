@@ -1,26 +1,12 @@
 class oracle::server {
-  exec {
-    "/usr/bin/apt-get -y update":
-      alias => "apt-update",
+  
+  exec { "apt-update":
+      command => "/usr/bin/apt-get -y update",
       timeout => 3600;
   }
 
   package {
-    "alien":
-      require => Exec["apt-update"],
-      ensure => installed;
-    # Needed for oracle installer
-    "bc":
-      require => Exec["apt-update"],
-      ensure => installed;
-    "libaio1":
-      require => Exec["apt-update"],
-      ensure => installed;
-    "unixodbc":
-      require => Exec["apt-update"],
-      ensure => installed;
-    "unzip":
-      require => Exec["apt-update"],
+    ["alien", "bc", "libaio1", "unixodbc", "unzip"]:
       ensure => installed;
   }
 
@@ -60,6 +46,8 @@ class oracle::server {
       user => root,
       unless => "/bin/mount | grep /dev/shm 2>/dev/null";
   }
+  
+  Exec["apt-update"] -> Package <| |>
 }
 
 class oracle::swap {
