@@ -30,9 +30,6 @@ class oracle::server {
   }
 
   service {
-    "monit":
-      require => Package["monit"],
-      ensure => running;
     "procps":
       ensure => running;
   }
