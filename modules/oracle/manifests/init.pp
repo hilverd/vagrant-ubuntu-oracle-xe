@@ -24,9 +24,10 @@ class oracle::server {
       ensure => installed;
   }
 
-  service {
+  exec {
     "procps":
-      ensure => running;
+      refreshonly => true,
+      command => "/etc/init.d/procps start";
   }
   
   file {
@@ -34,6 +35,7 @@ class oracle::server {
       mode => 0755,
       source => "puppet:///modules/oracle/chkconfig";
     "/etc/sysctl.d/60-oracle.conf":
+      notify => Exec['procps'],
       source => "puppet:///modules/oracle/60-oracle.conf";
     "/etc/rc2.d/S01shm_load":
       mode => 0755,
