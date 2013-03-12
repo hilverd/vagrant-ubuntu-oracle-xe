@@ -48,8 +48,9 @@ will get an error
 
     ORA-00845: MEMORY_TARGET not supported on this system
     
-during the configuration stage. In the `Vagrantfile` 3084 MB is assigned. Lower
-values may also work, as long as (I believe) 2 GB is available for Oracle.
+during the configuration stage. In the `Vagrantfile` 512MB MB is assigned. Lower
+values may also work, as long as (I believe) 2 GB of virtual memory is available
+for Oracle, swap is included in this calculation.
 
 [Vagrant]: http://www.vagrantup.com/
 
