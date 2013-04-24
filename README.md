@@ -27,6 +27,10 @@ project but uses Ubuntu 11.10.
 * Check out this project:
 
         git clone https://github.com/cwalker67/vagrant-ubuntu-oracle-xe.git
+        
+* Install [vbguest] 
+
+        vagrant plugin install vagrant-vbguest
 
 * Download [Oracle Database 11g Express Edition] for Linux x64. Place the file
   `oracle-xe-11.2.0-1.0.x86_64.rpm.zip` in the directory `modules/oracle/files`
@@ -35,11 +39,11 @@ project but uses Ubuntu 11.10.
 * Run `vagrant up` from the base directory of this project. This should take a
   few minutes.
 
-You should now be able to connect to the new database at `192.168.33.10:1521/xe`
-as `system` with password `manager`. For example, if you have `sqlplus`
+You should now be able to connect to the new database at `localhost:1521/xe`
+as `system` with password `password`. For example, if you have `sqlplus`
 installed on the host machine you can do
 
-    sqlplus system/manager@//192.168.33.10:1521/xe
+    sqlplus system/manager@//localhost:1521/xe
 
 ## Troubleshooting
 
@@ -51,6 +55,8 @@ will get an error
 during the configuration stage. In the `Vagrantfile` 3084 MB is assigned. Lower
 values may also work, as long as (I believe) 2 GB is available for Oracle.
 
+If you want to raise the default number of connections oracle xe check: [Raise OracleXE Connections]
+
 [Vagrant]: http://www.vagrantup.com/
 
 [Puppet]: http://puppetlabs.com/
@@ -60,3 +66,7 @@ values may also work, as long as (I believe) 2 GB is available for Oracle.
 [Installing Oracle 11g R2 Express Edition on Ubuntu 64-bit]: http://meandmyubuntulinux.blogspot.co.uk/2012/05/installing-oracle-11g-r2-express.html
 
 [vagrant-oracle-xe]: https://github.com/codescape/vagrant-oracle-xe
+
+[vbguest]: https://github.com/dotless-de/vagrant-vbguest
+
+[Raise OracleXE Connections]: http://stackoverflow.com/questions/906541/how-many-connections-can-oracle-express-edition-xe-handle
