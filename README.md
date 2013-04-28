@@ -51,10 +51,18 @@ It is important to assign enough memory to the virtual machine, otherwise you
 will get an error
 
     ORA-00845: MEMORY_TARGET not supported on this system
-    
-during the configuration stage. In the `Vagrantfile` 512MB MB is assigned. Lower
+
+during the configuration stage. In the `Vagrantfile` 512 MB is assigned. Lower
 values may also work, as long as (I believe) 2 GB of virtual memory is available
 for Oracle, swap is included in this calculation.
+
+If you want to raise the default number of connections, say to 200, then
+according to [How many connections can Oracle Express Edition (XE) handle?] you
+should run
+
+    ALTER SYSTEM SET processes=200 scope=spfile
+
+and restart the database.
 
 [Vagrant]: http://www.vagrantup.com/
 
