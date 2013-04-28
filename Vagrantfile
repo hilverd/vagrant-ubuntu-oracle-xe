@@ -29,10 +29,10 @@ Vagrant.configure("2") do |config|
 
   config.vbguest.auto_update = false
 
-  config.vm.provision :puppet,
-  :module_path => "modules",
-  :options => "--verbose --trace" do |puppet|
+  config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "base.pp"
+    puppet.module_path = "modules"
+    puppet.manifest_file = "base.pp"
+    puppet.options = "--verbose --trace"
   end
 end
