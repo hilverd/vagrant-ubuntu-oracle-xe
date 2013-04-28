@@ -51,23 +51,18 @@ It is important to assign enough memory to the virtual machine, otherwise you
 will get an error
 
     ORA-00845: MEMORY_TARGET not supported on this system
-
-during the configuration stage. In the `Vagrantfile` 3084 MB is assigned. Lower
-values may also work, as long as (I believe) 2 GB is available for Oracle.
-
-If you want to raise the default number of connections, say to 200, then
-according to [How many connections can Oracle Express Edition (XE) handle?] you
-should run
-
-    ALTER SYSTEM SET processes=200 scope=spfile
-
-and restart the database.
+    
+during the configuration stage. In the `Vagrantfile` 512MB MB is assigned. Lower
+values may also work, as long as (I believe) 2 GB of virtual memory is available
+for Oracle, swap is included in this calculation.
 
 [Vagrant]: http://www.vagrantup.com/
 
 [Puppet]: http://puppetlabs.com/
 
 [Oracle Database 11g Express Edition]: http://www.oracle.com/technetwork/products/express-edition/overview/index.html
+
+[Oracle Database 11g EE Documentation]: http://docs.oracle.com/cd/E17781_01/index.htm
 
 [Installing Oracle 11g R2 Express Edition on Ubuntu 64-bit]: http://meandmyubuntulinux.blogspot.co.uk/2012/05/installing-oracle-11g-r2-express.html
 
