@@ -56,9 +56,9 @@ during the configuration stage. In the `Vagrantfile` 512 MB is assigned. Lower
 values may also work, as long as (I believe) 2 GB of virtual memory is available
 for Oracle, swap is included in this calculation.
 
-If you want to raise the default number of connections, say to 200, then
-according to [How many connections can Oracle Express Edition (XE) handle?] you
-should run
+If you want to raise the limit of the number of concurrent connections, say to
+200, then according to
+[How many connections can Oracle Express Edition (XE) handle?] you should run
 
     ALTER SYSTEM SET processes=200 scope=spfile
 
