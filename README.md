@@ -12,8 +12,8 @@ how to install Oracle XE 11g on Ubuntu 12.04, without explicitly providing a
 Vagrant or provisioner configuration. The latter has the same purpose as this
 project but uses Ubuntu 11.10.
 
-Thanks to Charles Walker, Jeff Caddel, Matthew Buckett, Richard Kolb, and Steven
-Hsu for various contributions.
+Thanks to Charles Walker, Chris Thompson, Jeff Caddel, Matthew Buckett,
+Richard Kolb, and Steven Hsu for various contributions.
 
 ## Requirements
 
