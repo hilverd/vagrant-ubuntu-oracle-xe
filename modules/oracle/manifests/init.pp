@@ -136,6 +136,6 @@ class oracle::xe {
   service {
   	"oracle-xe":
   	  ensure => "running",
-  	  require => Package["oracle-xe"],
+  	  require => [Package["oracle-xe"], Exec["configure xe"]],
   }
 }
