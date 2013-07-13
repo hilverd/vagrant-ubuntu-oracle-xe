@@ -12,8 +12,8 @@ how to install Oracle XE 11g on Ubuntu 12.04, without explicitly providing a
 Vagrant or provisioner configuration. The latter has the same purpose as this
 project but uses Ubuntu 11.10.
 
-Thanks to Charles Walker, Chris Thompson, Jeff Caddel, Matthew Buckett,
-Richard Kolb, and Steven Hsu for various contributions.
+Thanks to Brandon Gresham, Charles Walker, Chris Thompson, Jeff Caddel, Matthew
+Buckett, Richard Kolb, and Steven Hsu for various contributions.
 
 ## Requirements
 
@@ -37,7 +37,8 @@ Richard Kolb, and Steven Hsu for various contributions.
 
 * Download [Oracle Database 11g Express Edition] for Linux x64. Place the file
   `oracle-xe-11.2.0-1.0.x86_64.rpm.zip` in the directory `modules/oracle/files`
-  of this project.
+  of this project. (Alternatively, you could keep the zip file in some other
+  location and make a hard link to it from `modules/oracle/files`.)
 
 * Run `vagrant up` from the base directory of this project. This should take a
   few minutes.
@@ -47,6 +48,17 @@ as `system` with password `manager`. For example, if you have `sqlplus`
 installed on the host machine you can do
 
     sqlplus system/manager@//localhost:1521/XE
+
+You might need to add an entry to your `tnsnames.ora` file first:
+
+    XE =
+      (DESCRIPTION =
+        (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
+        (CONNECT_DATA =
+          (SERVER = DEDICATED)
+          (SERVICE_NAME = XE)
+        )
+      )
 
 ## Troubleshooting
 
