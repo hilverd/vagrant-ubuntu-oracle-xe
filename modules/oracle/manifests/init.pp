@@ -6,7 +6,7 @@ class oracle::server {
   }
 
   package {
-    ["alien", "bc", "libaio1", "unixodbc", "unzip"]:
+    ["alien", "bc", "libaio1", "unixodbc", "unzip", "rlwrap"]:
       ensure => installed;
   }
 

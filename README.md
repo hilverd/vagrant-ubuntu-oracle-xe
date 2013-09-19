@@ -49,6 +49,11 @@ installed on the host machine you can do
 
     sqlplus system/manager@//localhost:1521/XE
 
+To make sqlplus behave like other tools (history, arrow keys etc.) you can do
+this:
+
+    rlwrap sqlplus system/manager@//localhost:1521/XE
+
 You might need to add an entry to your `tnsnames.ora` file first:
 
     XE =
