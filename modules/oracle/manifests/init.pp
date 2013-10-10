@@ -113,6 +113,7 @@ class oracle::xe {
       require => [Package["alien"], Exec["unzip xe"]],
       creates => "/home/vagrant/oracle-xe_11.2.0-2_amd64.deb",
       user => root,
+      timeout => 3600,
       unless => "/usr/bin/test -f /etc/default/oracle-xe";
     "configure xe":
       command => "/etc/init.d/oracle-xe configure responseFile=/tmp/xe.rsp >> /tmp/xe-install.log",
