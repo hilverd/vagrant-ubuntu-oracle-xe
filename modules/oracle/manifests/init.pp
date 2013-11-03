@@ -106,6 +106,7 @@ class oracle::xe {
       cwd => "/home/vagrant",
       user => root,
       creates => "/home/vagrant/oracle-xe-11.2.0-1.0.x86_64.rpm",
+      timeout => 3600,
       unless => "/usr/bin/test -f /etc/default/oracle-xe";
     "alien xe":
       command => "/usr/bin/alien --to-deb --scripts Disk1/oracle-xe-11.2.0-1.0.x86_64.rpm",
@@ -117,6 +118,7 @@ class oracle::xe {
       unless => "/usr/bin/test -f /etc/default/oracle-xe";
     "configure xe":
       command => "/etc/init.d/oracle-xe configure responseFile=/tmp/xe.rsp >> /tmp/xe-install.log",
+      timeout => 3600,
       require => [Package["oracle-xe"],
                   File["/etc/profile.d/oracle-env.sh"],
                   File["/tmp/xe.rsp"],
