@@ -89,7 +89,7 @@ and restart the database.
 
 [Puppet]: http://puppetlabs.com/
 
-[Oracle Database 11g Express Edition]: http://www.oracle.com/technetwork/products/express-edition/overview/index.html
+[Oracle Database 11g Express Edition]: http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html
 
 [Oracle Database 11g EE Documentation]: http://docs.oracle.com/cd/E17781_01/index.htm
 
