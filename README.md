@@ -41,6 +41,8 @@ Mark Crossfield, Matthew Buckett, Richard Kolb, and Steven Hsu for various contr
   note that building the VM involves downloading an Ubuntu 12.04
   [base box](http://docs.vagrantup.com/v2/boxes.html) which is 323MB in size.
 
+## Connecting
+
 You should now be able to
 [connect](http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html) to
 the new database at `localhost:1521/XE` as `system` with password `manager`. For example, if you
