@@ -20,8 +20,7 @@ Mark Crossfield, Matthew Buckett, Richard Kolb, and Steven Hsu for various contr
 * The host machine probably needs at least 4 GB of RAM (I have only tested 8 GB of RAM).
 * As Oracle 11g XE is only available for 64-bit machines at the moment, the host machine needs to
   have a 64-bit architecture.
-* I have tested this project on a host machine running Ubuntu 12.04, but other operating systems
-  should also work, as long as they can run Vagrant.
+* You may need to [enable virtualization] manually.
 
 ## Installation
 
@@ -38,7 +37,9 @@ Mark Crossfield, Matthew Buckett, Richard Kolb, and Steven Hsu for various contr
   project. (Alternatively, you could keep the zip file in some other location and make a hard link
   to it from `modules/oracle/files`.)
 
-* Run `vagrant up` from the base directory of this project. This should take a few minutes.
+* Run `vagrant up` from the base directory of this project. This should take a few minutes. Please
+  note that building the VM involves downloading an Ubuntu 12.04
+  [base box](http://docs.vagrantup.com/v2/boxes.html) which is 323MB in size.
 
 You should now be able to
 [connect](http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html) to
@@ -94,3 +95,5 @@ and restart the database.
 [vbguest]: https://github.com/dotless-de/vagrant-vbguest
 
 [How many connections can Oracle Express Edition (XE) handle?]: http://stackoverflow.com/questions/906541/how-many-connections-can-oracle-express-edition-xe-handle
+
+[enable virtualization]: http://www.sysprobs.com/disable-enable-virtualization-technology-bios
