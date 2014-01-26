@@ -1,31 +1,46 @@
 class oracle::server {
-
   exec { "apt-update":
-      command => "/usr/bin/apt-get -y update",
-      timeout => 3600;
+    command => "/usr/bin/apt-get -y update",
+    timeout => 3600;
   }
 
   package {
-    ["alien", "bc", "libaio1", "unixodbc", "unzip", "rlwrap"]:
+    ["alien", "bc", "libaio1", "unixodbc", "unzip", "rlwrap", "dos2unix"]:
       ensure => installed;
   }
 
-  exec {
-    "procps":
-      refreshonly => true,
-      command => "/etc/init.d/procps start";
+  exec { "procps":
+    refreshonly => true,
+    command => "/etc/init.d/procps start";
   }
 
   file {
-    "/sbin/chkconfig":
+    "/tmp/chkconfig":
       mode => 0755,
       source => "puppet:///modules/oracle/chkconfig";
-    "/etc/sysctl.d/60-oracle.conf":
+    "/tmp/60-oracle.conf":
       notify => Exec['procps'],
       source => "puppet:///modules/oracle/60-oracle.conf";
-    "/etc/rc2.d/S01shm_load":
+    "/tmp/S01shm_load":
       mode => 0755,
       source => "puppet:///modules/oracle/S01shm_load";
+  }
+
+  # If we're running on Windows, then Git may have converted line endings to CRLF upon cloning the
+  # repository. Here we use dos2unix to make sure that they are LF.
+  exec {
+    "dos2unix chkconfig":
+      command => "/usr/bin/dos2unix -n /tmp/chkconfig /sbin/chkconfig",
+      creates => "/sbin/chkconfig",
+      require => [File["/tmp/chkconfig"], Package["dos2unix"]];
+    "dos2unix 60-oracle.conf":
+      command => "/usr/bin/dos2unix -n /tmp/60-oracle.conf /etc/sysctl.d/60-oracle.conf",
+      creates => "/etc/sysctl.d/60-oracle.conf",
+      require => [File["/tmp/60-oracle.conf"], Package["dos2unix"]];
+    "dos2unix S01shm_load":
+      command => "/usr/bin/dos2unix -n /tmp/S01shm_load /etc/rc2.d/S01shm_load",
+      creates => "/etc/rc2.d/S01shm_load",
+      require => [File["/tmp/S01shm_load"], Package["dos2unix"]];
   }
 
   user {
@@ -39,12 +54,11 @@ class oracle::server {
       ensure => present;
   }
 
-  exec {
-    "set up shm":
-      command => "/etc/rc2.d/S01shm_load start",
-      require => File["/etc/rc2.d/S01shm_load"],
-      user => root,
-      unless => "/bin/mount | grep /dev/shm 2>/dev/null";
+  exec { "set up shm":
+    command => "/etc/rc2.d/S01shm_load start",
+    require => Exec["dos2unix S01shm_load"],
+    user => root,
+    unless => "/bin/mount | grep /dev/shm 2>/dev/null";
   }
 
   Exec["apt-update"] -> Package <| |>
@@ -86,9 +100,9 @@ class oracle::xe {
   file {
     "/home/vagrant/oracle-xe-11.2.0-1.0.x86_64.rpm.zip":
       source => "puppet:///modules/oracle/oracle-xe-11.2.0-1.0.x86_64.rpm.zip";
-    "/etc/profile.d/oracle-env.sh":
+    "/tmp/oracle-env.sh":
       source => "puppet:///modules/oracle/oracle-env.sh";
-    "/tmp/xe.rsp":
+    "/tmp/xe.rsp.orig":
       source => "puppet:///modules/oracle/xe.rsp";
     "/bin/awk":
       ensure => link,
@@ -97,6 +111,17 @@ class oracle::xe {
       ensure => directory;
     "/var/lock/subsys/listener":
       ensure => present;
+  }
+
+  exec {
+    "dos2unix oracle-env.sh":
+      command => "/usr/bin/dos2unix -n /tmp/oracle-env.sh /etc/profile.d/oracle-env.sh",
+      creates => "/etc/profile.d/oracle-env.sh",
+      require => [File["/tmp/oracle-env.sh"], Package["dos2unix"]];
+    "dos2unix xe.rsp":
+      command => "/usr/bin/dos2unix -n /tmp/xe.rsp.orig /tmp/xe.rsp",
+      creates => "/tmp/xe.rsp",
+      require => [File["/tmp/xe.rsp.orig"], Package["dos2unix"]];
   }
 
   exec {
@@ -120,8 +145,8 @@ class oracle::xe {
       command => "/etc/init.d/oracle-xe configure responseFile=/tmp/xe.rsp >> /tmp/xe-install.log",
       timeout => 3600,
       require => [Package["oracle-xe"],
-                  File["/etc/profile.d/oracle-env.sh"],
-                  File["/tmp/xe.rsp"],
+                  Exec["dos2unix oracle-env.sh"],
+                  Exec["dos2unix xe.rsp"],
                   File["/var/lock/subsys/listener"],
                   Exec["set up shm"],
                   Exec["enable swapfile"]],
@@ -137,8 +162,11 @@ class oracle::xe {
   }
 
   service {
-  	"oracle-xe":
-  	  ensure => "running",
-  	  require => [Package["oracle-xe"], Exec["configure xe"]],
+    "oracle-xe":
+      ensure => "running",
+      require => [Package["oracle-xe"],
+                  Exec["configure xe"],
+                  Exec["dos2unix chkconfig"],
+                  Exec["dos2unix 60-oracle.conf"]],
   }
 }
