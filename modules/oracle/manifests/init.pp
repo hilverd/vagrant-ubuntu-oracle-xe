@@ -161,6 +161,13 @@ class oracle::xe {
       source => "/home/vagrant/oracle-xe_11.2.0-2_amd64.deb",
   }
 
+  exec {
+    "run chkconfig":
+      command => "/sbin/chkconfig",
+      user => root,
+      require => Service["oracle-xe"];
+  }
+
   service {
     "oracle-xe":
       ensure => "running",

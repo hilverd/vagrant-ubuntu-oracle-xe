@@ -12,7 +12,8 @@ This project was created based on the information in
 purpose as this project but uses Ubuntu 11.10.
 
 Thanks to André Kelpe, Brandon Gresham, Charles Walker, Chris Thompson, Jeff Caddel, Joe FitzGerald,
-Mark Crossfield, Matthew Buckett, Richard Kolb, and Steven Hsu for various contributions.
+Justin Harringa, Mark Crossfield, Matthew Buckett, Richard Kolb, and Steven Hsu for various
+contributions.
 
 ## Requirements
 
