@@ -10,6 +10,9 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.hostname = "oracle"
 
+  # share this project under /home/vagrant/vagrant-ubuntu-oracle-xe
+  config.vm.synced_folder ".", "/home/vagrant/vagrant-ubuntu-oracle-xe", :mount_options => ["dmode=777","fmode=666"]
+  
   # Forward Oracle port
   config.vm.network :forwarded_port, guest: 1521, host: 1521
 
@@ -35,4 +38,7 @@ Vagrant.configure("2") do |config|
     puppet.manifest_file = "base.pp"
     puppet.options = "--verbose --trace"
   end
+  
+  # this runs the maven goals for data-with-flyway
+  config.vm.provision "shell", path: "flyway.sh"
 end

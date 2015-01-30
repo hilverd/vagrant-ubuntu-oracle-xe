@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.hilverd</groupId>
+	<artifactId>data-with-flyway</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Data with Flyway</name>
+	<description>A subproject for https://github.com/hilverd/vagrant-ubuntu-oracle-xe that provides a means for creating tables and inserting data into the Oracle Express instance it provides.</description>
+
+	<properties>
+		<!-- Default properties are used in the event 'flyway.properties' is not available -->
+		<flyway.driver>oracle.jdbc.driver.OracleDriver</flyway.driver>
+		<flyway.url>jdbc:oracle:thin:@localhost:1521:xe</flyway.url>
+		<flyway.user>system</flyway.user>
+		<flyway.password>manager</flyway.password>
+		<flyway.schemas>MYSCHEMA</flyway.schemas>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<locations>
+						<location>classpath:database/migrations</location>
+					</locations>
+				</configuration>
+				<dependencies>
+					<!-- This dependency is not in Maven Central. See ../oracle-jdbc/README.md for instructions -->
+					<dependency>
+						<groupId>com.oracle</groupId>
+						<artifactId>ojdbc6</artifactId>
+						<version>11.2.0.4</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>
