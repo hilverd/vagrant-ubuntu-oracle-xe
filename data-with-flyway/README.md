@@ -6,8 +6,10 @@ inserting data into the Oracle Express instance the parent project provides.
 Given you've followed all of the instructions on the parent project's README, this project is executed automatically
 by Puppet during provisioning. 
 
-If you want to add more tables and/or data to the Oracle Express instance, create additional files in src/main/resources/database/migrations
-following the examples provided.
+If you want to add more tables and/or data to the Oracle Express instance, create files in src/main/resources/database/migrations
+following the examples provided. The included examples are originally from the [Flyway Getting Started documentation](http://flywaydb.org/getstarted/firststeps/maven.html), with
+some Oracle specific changes.
+
 Learn more about adding migrations [here](http://flywaydb.org/documentation/migration/) and [here](http://flywaydb.org/documentation/migration/sql.html).
 
 ### Running Flyway manually
