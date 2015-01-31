@@ -1,3 +1,14 @@
+.project
 .vagrant
 
+flyway.properties
+
 modules/oracle/files/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+modules/java
+modules/maven
+modules/stdlib
+modules/wget
+
+oracle-jdbc/ojdbc6.jar
+
+target
