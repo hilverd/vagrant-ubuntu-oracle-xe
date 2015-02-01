@@ -46,8 +46,8 @@ contributions.
     See `data-with-flyway/README.md` for more instructions.
     Many thanks to [Nicholas Blair](https://github.com/nblair) for contributing this feature.
 
-* Run `vagrant up` from the base directory of this project. This should take a few minutes. Please
-  note that building the VM involves downloading an Ubuntu 12.04
+* Run `vagrant up` from the base directory of this project. The first time this will take a while -- up to 30 minutes on
+  my machine. Please note that building the VM involves downloading an Ubuntu 12.04
   [base box](http://docs.vagrantup.com/v2/boxes.html) which is 323MB in size.
 
 These steps are also shown in an [asciicast] made by Daekwon Kang.
