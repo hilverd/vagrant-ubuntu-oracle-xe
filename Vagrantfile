@@ -32,6 +32,14 @@ Vagrant.configure("2") do |config|
 
   config.vbguest.auto_update = false
 
+  $install_puppet_modules = <<SCRIPT
+  mkdir -p /etc/puppet/modules
+  puppet module list | grep -q puppetlabs-java || puppet module install puppetlabs-java
+  puppet module list | grep -q maestrodev-maven || puppet module install maestrodev-maven
+SCRIPT
+
+  config.vm.provision "shell", inline: $install_puppet_modules
+
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.module_path = "modules"
@@ -39,6 +47,6 @@ Vagrant.configure("2") do |config|
     puppet.options = "--verbose --trace"
   end
   
-  # this runs the maven goals for data-with-flyway
+  # Run the Maven goals for data-with-flyway
   config.vm.provision "shell", path: "flyway.sh"
 end

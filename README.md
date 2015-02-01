@@ -33,20 +33,19 @@ contributions.
 
         vagrant plugin install vagrant-vbguest
 
-* Install Puppet modules for Java and [Maven](http://maven.apache.org):
-
-        puppet module install puppetlabs-java --modulepath=modules
-
-		puppet module install maestrodev-maven --modulepath=modules
-		
 * Download [Oracle Database 11g Express Edition] for Linux x64. Place the file
   `oracle-xe-11.2.0-1.0.x86_64.rpm.zip` in the directory `modules/oracle/files` of this
   project. (Alternatively, you could keep the zip file in some other location and make a hard link
   to it from `modules/oracle/files`.)
 
-* Download [Oracle Database 11g Release 2 11.2.0.4 JDBC Drivers](http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-112010-090769.html) for **JDK 1.6**. 
-  Place the file `ojdbc6.jar` in the directory `oracle-jdbc` of this project.
-  
+* *Optional:* To get [Flyway](http://flywaydb.org/) integration, download `ojdbc6.jar` for JDK 1.6 from
+    [Oracle Database 11g Release 2 11.2.0.4 JDBC Drivers](http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-112010-090769.html),
+    and place it in the directory `oracle-jdbc` of this project.
+
+    Migrations are in `data-with-flyway/src/main/resources/database/migrations`.
+    See `data-with-flyway/README.md` for more instructions.
+    Many thanks to [Nicholas Blair](https://github.com/nblair) for contributing this feature.
+
 * Run `vagrant up` from the base directory of this project. This should take a few minutes. Please
   note that building the VM involves downloading an Ubuntu 12.04
   [base box](http://docs.vagrantup.com/v2/boxes.html) which is 323MB in size.
