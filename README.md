@@ -78,6 +78,12 @@ You might need to add an entry to your `tnsnames.ora` file first:
 
 ## Troubleshooting
 
+### Errors when Unzipping
+
+If you get an error containing `/usr/bin/unzip -o oracle-xe-11.2.0-1.0.x86_64.rpm.zip returned 2` during `vagrant up`, then the zip file you have downloaded is probably corrupted. This can be fixed by re-downloading, replacing the corrupted file, and running `vagrant reload --provision`.
+
+### Memory
+
 It is important to assign enough memory to the virtual machine, otherwise you will get an error
 
     ORA-00845: MEMORY_TARGET not supported on this system
@@ -85,6 +91,8 @@ It is important to assign enough memory to the virtual machine, otherwise you wi
 during the configuration stage. In the `Vagrantfile` 512 MB is assigned. Lower values may also work,
 as long as (I believe) 2 GB of virtual memory is available for Oracle, swap is included in this
 calculation.
+
+### Concurrent Connections
 
 If you want to raise the limit of the number of concurrent connections, say to 200, then according
 to [How many connections can Oracle Express Edition (XE) handle?] you should run
