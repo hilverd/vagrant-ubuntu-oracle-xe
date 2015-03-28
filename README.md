@@ -50,7 +50,9 @@ contributions.
   my machine. Please note that building the VM involves downloading an Ubuntu 12.04
   [base box](http://docs.vagrantup.com/v2/boxes.html) which is 323MB in size.
 
-These steps are also shown in an [asciicast] made by Daekwon Kang.
+These steps are also shown in an [asciicast] made by Daekwon Kang:
+
+[![asciicast](https://asciinema.org/a/8438.png)](https://asciinema.org/a/8438)
 
 ## Connecting
 
