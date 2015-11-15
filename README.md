@@ -103,6 +103,11 @@ to [How many connections can Oracle Express Edition (XE) handle?] you should run
 
 and restart the database.
 
+## Alternatives
+
+You may also want to consider a Docker-based solution such as
+[docker-oracle-xe-11g](https://github.com/alexei-led/docker-oracle-xe-11g).
+
 [Vagrant]: http://www.vagrantup.com/
 
 [Puppet]: http://puppetlabs.com/
