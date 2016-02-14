@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # share this project under /home/vagrant/vagrant-ubuntu-oracle-xe
   config.vm.synced_folder ".", "/home/vagrant/vagrant-ubuntu-oracle-xe", :mount_options => ["dmode=777","fmode=666"]
-  
+
   # Forward Oracle port
   config.vm.network :forwarded_port, guest: 1521, host: 1521
 
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
   # This is just an example, adjust as needed
   config.vm.provision :shell, :inline => "echo \"America/New_York\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
 
-  config.vbguest.auto_update = false
+  config.vbguest.auto_update = true
 
   $install_puppet_modules = <<SCRIPT
   if [ -f /home/vagrant/vagrant-ubuntu-oracle-xe/oracle-jdbc/ojdbc6.jar ]; then
@@ -49,7 +49,7 @@ SCRIPT
     puppet.manifest_file = "base.pp"
     puppet.options = "--verbose --trace"
   end
-  
+
   # Run the Maven goals for data-with-flyway
   config.vm.provision "shell", path: "flyway.sh"
 end
