@@ -6,8 +6,7 @@ Vagrant.configure("2") do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.vm.box = "precise64"
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box = "ubuntu/precise64"
   config.vm.hostname = "oracle"
 
   # share this project under /home/vagrant/vagrant-ubuntu-oracle-xe
