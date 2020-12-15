@@ -112,7 +112,7 @@ You may also want to consider a Docker-based solution such as
 
 [Puppet]: http://puppetlabs.com/
 
-[Oracle Database 11g Express Edition]: http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html
+[Oracle Database 11g Express Edition]: https://www.oracle.com/database/technologies/xe-prior-releases.html
 
 [Oracle Database 11g EE Documentation]: http://docs.oracle.com/cd/E17781_01/index.htm
 
